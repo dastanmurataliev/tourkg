@@ -26,7 +26,7 @@ export default function TourList ({mode}) {
   //   setTours(info)
   // })
 
-  axios.get("https://jsonplaceholder.typicode.com/todos/")
+  axios.get("https://jsonplaceholder.typicode.com/posts")
   .then(response => setTours(response.data))
   }
   useEffect(getData,[])
