@@ -1,8 +1,11 @@
 import './App.css';
 import TourList from './components/TourList'
 import {useState} from 'react';
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import AboutPage from './pages/aboutPage/AboutPage';
 import Mode from './components/Mode/Mode';
-import Footer from './components/Footer/Footer';
+
+
 
 
 function App() {
@@ -10,12 +13,18 @@ function App() {
   
   return (
   <div className="App">
-    <Mode mode={mode} changeMode = {setMode}/>
-    <TourList mode={mode}/>
-    <Footer mode={mode}/>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<TourList />}/>
+        <Route path='/about' element={<AboutPage/>}/>
+        <Route path='/profile' element={<Mode mode={mode} changeMode={setMode}/>}/>
+      </Routes>
+      
+    </BrowserRouter>
   </div>
       
   )
 }
+
 
 export default App;
