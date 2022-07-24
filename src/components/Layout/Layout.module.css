@@ -1,0 +1,18 @@
+.footer{
+  display: inline-block;
+  justify-content:space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footerWrapper{
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+}
+
+.footerLi {
+  color: black;
+  font-size: 24px;
+  list-style-type: none;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../../components/Footer/Footer';
+// import Footer from '../../components/Footer/Footer';
 
 function AboutPage(props) {
 	return (
@@ -33,7 +33,7 @@ Miyagi & Andy Panda
 Я по уши тебя влюблен
 Ночью оберегать сон
         </p>
-        <Footer/>
+        {/* <Footer/> */}
 		</div>
 	);
 }

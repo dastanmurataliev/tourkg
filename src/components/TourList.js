@@ -1,7 +1,7 @@
 import TourItem from './TourItem'
 import {useState, useEffect} from 'react' 
 import axios from 'axios';
-import Footer from './Footer/Footer';
+// import Footer from './Footer/Footer';
 
 export default function TourList () {
   const [tours, setTours] = useState([]);
@@ -25,7 +25,6 @@ export default function TourList () {
       <ul>
         {tours.map(items)}
       </ul>
-      <Footer/>
     </div>
   )
 }
