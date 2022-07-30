@@ -1,33 +1,48 @@
 import './App.css';
-import TourList from './components/TourList'
-import {useState} from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import AboutPage from './pages/aboutPage/AboutPage';
-import Mode from './components/Mode/Mode';
-
-import {Layout} from './components/Layout/Layout'
-
-
+// import {useState} from 'react';
+import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import Profile from './components/Profile/Profile';
+import Main from './components/Main';
+import Counter from './components/Counter/Counter'
+import { useSelector } from 'react-redux'
 
 
 function App() {
-  const [mode, setMode] = useState({current:"day"})
-  
-  return (
-  <div className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<TourList/>}/>
-          <Route path='about' element={<AboutPage/>}/>
-          <Route path='profile' element={<Mode mode={mode} changeMode={setMode}/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </div>
-      
-  )
+
+  const style = {
+    day: {
+        color: "black",
+        backgroundColor: "white",
+    },
+    night: {
+        color: "white",
+        backgroundColor: "black",
+    }
 }
 
+const currentMode = useSelector((state) => state.mode.current)
+
+const currentStyle = currentMode === "day" ? style.day : style.night
+
+
+  return (
+  <div style={currentStyle}>
+    <BrowserRouter>
+      <nav>
+          <Link to='/'>Домой</Link>
+          <Link to='/profile'>Профиль</Link>
+          <Link to='/counter'>Счётчик(Redux)</Link>
+
+      </nav>
+      <Routes>
+        <Route path='/' element = {<Main/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/counter' element={<Counter/>}/>
+      </Routes>
+    </BrowserRouter>
+    
+  </div>
+  )
+}
 
 export default App;

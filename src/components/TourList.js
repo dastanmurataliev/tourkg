@@ -1,30 +1,32 @@
-import TourItem from './TourItem'
-import {useState, useEffect} from 'react' 
+import TourItem from './TourItem';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import Footer from './Footer/Footer';
-
-export default function TourList () {
-  const [tours, setTours] = useState([]);
-
-  function getData(){
 
 
-  axios.get("https://jsonplaceholder.typicode.com/users")
-  .then(response => setTours(response.data))
-  }
-  useEffect(getData,[])
+export default function TourList() {
+    
 
-  function items(element, index) {
-    return <TourItem key={index} tourName={element.name}/>
-  }
+    const [tours, setTours] = useState([])
+
+    function getData() {
+        
+        axios.get("https://jsonplaceholder.typicode.com/posts/")
+            .then(response => setTours(response.data))
+    }
+
+    useEffect(getData, [])
+
+    function items(element, index) {
+        return <TourItem key={index} tourName={element.title}/>
+    }
 
 
-  return (
-    <div>
-      <h2>Список туров:</h2>
-      <ul>
-        {tours.map(items)}
-      </ul>
-    </div>
-  )
+    return (
+        <div>
+            <h2>Список туров:</h2>
+            <ul>
+                {tours.map(items)}
+            </ul>
+        </div>
+    )
 }
